@@ -140,7 +140,7 @@ package starling.animation
          *  });
          *  </pre> 
          */
-        public function tween(target:Object, time:Number, properties:Object):void
+        public function tween(target:Object, time:Number, properties:Object):Tween
         {
             var tween:Tween = Tween.starling_internal::fromPool(target, time);
             
@@ -158,6 +158,8 @@ package starling.animation
             
             tween.addEventListener(Event.REMOVE_FROM_JUGGLER, onPooledTweenComplete);
             add(tween);
+
+            return tween;
         }
         
         private function onPooledTweenComplete(event:Event):void
